@@ -7,15 +7,17 @@ import java.awt.*;
 
 public class Display {
     private String name;
-    private final int WIDTH = 800;
-    private final int HEIGHT = 600;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
     private JFrame frame;
     private Canvas canvas;
 
     public Display(String name) {
         this.name = name;
         init (name);
-
+        }
+    public Canvas getCanvas(){
+        return  canvas;
     }
 
     private void init (String name) {
@@ -27,6 +29,9 @@ public class Display {
         this.frame.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         this.frame.setFocusable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.frame.setResizable(false);
+        this.frame.setLocationRelativeTo(null);
+
 
         this.canvas = new Canvas();
         this.canvas.setMinimumSize(new Dimension(WIDTH, HEIGHT));
