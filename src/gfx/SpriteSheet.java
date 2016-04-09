@@ -1,21 +1,19 @@
 package gfx;
 
-
 import java.awt.image.BufferedImage;
 
+/**
+ * Created by lgoychev on 4/9/16.
+ */
 public class SpriteSheet {
     private BufferedImage image;
-    private int cropWidth;
-    private int cropHeight;
 
-    public SpriteSheet (BufferedImage image, int cropWidth, int cropHeight) {
-            this.image = image;
-            this.cropHeight = cropHeight;
-            this.cropWidth = cropWidth;
+    public SpriteSheet(BufferedImage image) {
+        this.image = image;
+
     }
 
-    public BufferedImage crop(int x, int y) {
-        return this.image.getSubimage(x*cropWidth, y*cropHeight, cropWidth, cropHeight);
+    public BufferedImage crop(int x, int y, int width, int height) {
+        return this.image.getSubimage( x, y, width, height);
     }
-
 }
