@@ -1,5 +1,6 @@
 package Game;
 
+import Game.entities.Fighter;
 import Game.entities.Player;
 import javafx.scene.input.KeyCode;
 
@@ -34,6 +35,15 @@ public class InputHandler implements KeyListener{
             Player.isMovingRight= false;
             Player.isMovingLeft= true;
         }
+
+        if (code == KeyEvent.VK_R){
+            Fighter.isMovingRight= true;
+            Fighter.isMovingLeft= false;
+
+        } else  if (code == KeyEvent.VK_L){
+            Fighter.isMovingRight= false;
+            Fighter.isMovingLeft= true;
+        }
     }
 
     @Override
@@ -45,6 +55,15 @@ public class InputHandler implements KeyListener{
         } else  if (code == KeyEvent.VK_LEFT){
             Player.isMovingRight= false;
             Player.isMovingLeft= false;
+        }
+
+        if (code == KeyEvent.VK_R){
+            Fighter.isMovingRight= false;
+            Fighter.isMovingLeft= false;
+
+        } else  if (code == KeyEvent.VK_L){
+            Fighter.isMovingRight= false;
+            Fighter.isMovingLeft= false;
         }
     }
 

@@ -5,12 +5,10 @@ import gfx.SpriteSheet;
 
 import java.awt.*;
 
-
-
-
-public class Player {
-
-
+/**
+ * Created by lgoychev on 4/10/16.
+ */
+public class Fighter {
 
     private  int x,y, width, height, velocity, hitPoints;
     private SpriteSheet img;
@@ -20,17 +18,17 @@ public class Player {
 
     public static boolean isMovingLeft, isMovingRight;
 
-    public Player (int x, int y, int hitPoints) {
+    public Fighter (int x, int y, int hitPoints) {
 
 
 
         this.x = x;
         this.y = y;
         this.velocity = 10;
-        this.width = 105; //105
-        this.height = 99; //99
+        this.width = 75; //105
+        this.height = 97; //99
         this.hitPoints = hitPoints;
-        this.img = Assets.player; //player
+        this.img = Assets.fighter; //player
         this.boundingBox = new Rectangle(x,y, this.width, this.height);
 
     }
@@ -40,12 +38,12 @@ public class Player {
             this.x += this.velocity;
             this.row = 0;
             this.column++;
-            this.column %= 10; //10
-            } else  if (isMovingLeft){
+            this.column %= 4; //10
+        } else  if (isMovingLeft){
             this.x -= this.velocity;
             this.row = 1;
             this.column++;
-            this.column %= 10; //10
+            this.column %= 4; //10
         } else {
             this.row = 0;
             this.column = 0;
@@ -57,13 +55,11 @@ public class Player {
 
     public void render(Graphics g) {
 
-            g.drawImage(this.img.crop(this.column*this.width,this.row*this.height,this.width, this.height),
-                    this.x,
-                    this.y,
-                    null );
+        g.drawImage(this.img.crop(this.column*this.width,this.row*this.height,this.width, this.height),
+                this.x,
+                this.y,
+                null );
 
 
     }
-
-
 }

@@ -1,6 +1,7 @@
 package Game;
 
 import Display.Display;
+import Game.entities.Fighter;
 import Game.entities.Player;
 import gfx.Assets;
 import gfx.ImageLoader;
@@ -29,6 +30,7 @@ public class game implements Runnable {
 
     //testing
     private Player bird;
+    private Fighter john;
 
 
     //private SpriteSheet player; // testing without PLayer.java
@@ -51,10 +53,11 @@ public class game implements Runnable {
         this.ih = new InputHandler(this.display.getCanvas());
 
         this.bird = new Player(100, 100, 20);
+        this.john = new Fighter(100, 437, 20);
 
         //this.player = Assets.player; // without Player.java
 
-        this.sh = new SpriteSheet(ImageLoader.loadImage("/textures/sprite1.png")); // without Assets
+        //this.sh = new SpriteSheet(ImageLoader.loadImage("/textures/sprite1.png")); // without Assets
 
 
 
@@ -62,6 +65,7 @@ public class game implements Runnable {
 
     public void tick() {
         this.bird.tick();
+        this.john.tick();
 
       // without PLayer.java
         //this.col++;
@@ -91,9 +95,10 @@ public class game implements Runnable {
 
 
 
-        SpriteSheet player = Assets.player;
+        //SpriteSheet fighter = Assets.fighter;
 
         this.bird.render(this.g);
+        this.john.render(this.g);
 
        //whithout PLayer.java
         //int imgWidth = 105;
