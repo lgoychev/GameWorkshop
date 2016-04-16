@@ -13,10 +13,10 @@ public class Assets {
 
     public static void init() {
 
-        background = ImageLoader.loadImage("/textures/background.jpg");
+        background = ImageLoader.loadImage("/textures/menu_bckg.png");
         player = new SpriteSheet(ImageLoader.loadImage("/textures/sprite1.png"));
         fighter = new SpriteSheet(ImageLoader.loadImage("/textures/sprite_fighter.png"));
-         menuButtons = new SpriteSheet(ImageLoader.loadImage("/textures/buttons.png"));
+         menuButtons = new SpriteSheet(ImageLoader.loadImage("/textures/menu.png"));
 
 
     }

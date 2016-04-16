@@ -15,24 +15,23 @@ public class Menu {
     public Rectangle helpButton = new Rectangle(350,250,100,50);
     public Rectangle quitButton = new Rectangle(350,350,100,50);*/
 
-    private SpriteSheet playButton;
-    private SpriteSheet helpButton;
-    private SpriteSheet quitpButton;
+    private SpriteSheet menuImg;
+
 
     public Menu (){
-        this.playButton = Assets.menuButtons;
+        this.menuImg = Assets.menuButtons;
     }
 
     public void render(Graphics g){
 
         Graphics2D g2d = (Graphics2D) g;
 
-        Font fnt0 = new Font("arial", Font.CENTER_BASELINE,50);
+        /*Font fnt0 = new Font("arial", Font.CENTER_BASELINE,50);
         g.setFont(fnt0);
         g.setColor(Color.white);
-        g.drawString("Falling Eggs",250,100);
+        g.drawString("Falling Eggs",250,100);*/
 
-        g.drawImage(this.playButton.crop(0,0,310,80), 100, 150, null);
+        g.drawImage(this.menuImg.crop(0,0,200,235), 335, 172, null);
 
 
         /*Font fnt1 = new Font("arial", Font.CENTER_BASELINE,30);

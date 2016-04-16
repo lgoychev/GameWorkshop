@@ -119,7 +119,7 @@ public class game implements Runnable {
         this.g.clearRect(0,0,this.widht,this.height);
 
         //start drawing
-        this.g.drawImage(ImageLoader.loadImage("/textures/background.jpg"),0, 0, 800, 600, null);
+        this.g.drawImage(ImageLoader.loadImage("/textures/menu_bckg.png"),0, 0, 800, 600, null);
 
         //Game Menu
         if (state == STATE.GAME) {
