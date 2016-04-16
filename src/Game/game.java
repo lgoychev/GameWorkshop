@@ -10,6 +10,8 @@ import javafx.scene.layout.Background;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class game implements Runnable {
     private String name;
@@ -27,10 +29,22 @@ public class game implements Runnable {
     private SpriteSheet sh;
 
     private InputHandler ih;
+    private MouseInput mi;
 
-    //testing
+    //Game menu
+    
+    public static enum STATE {
+        MENU,
+        GAME
+    };
+
+    public static STATE state = STATE.MENU;
+
+    
+    private Menu menu; // Game menu
     private Player bird;
     private Fighter john;
+    
 
 
     //private SpriteSheet player; // testing without PLayer.java
@@ -45,15 +59,22 @@ public class game implements Runnable {
         this.height = height;
 
     }
-
     public void init() {
 
         Assets.init();
         this.display = new Display(this.name, this.widht,this.height);
         this.ih = new InputHandler(this.display.getCanvas());
+        this.mi = new MouseInput(this.display.getCanvas());
 
         this.bird = new Player(100, 100, 20);
         this.john = new Fighter(100, 437, 20);
+
+
+
+         //Game Menu
+        this.menu = new Menu();
+
+
 
         //this.player = Assets.player; // without Player.java
 
@@ -64,8 +85,15 @@ public class game implements Runnable {
     }
 
     public void tick() {
-        this.bird.tick();
-        this.john.tick();
+       // Game Menu
+        if (state == STATE.GAME){
+            this.bird.tick();
+            this.john.tick();
+        }
+
+      //before Game Menu
+        //this.bird.tick();
+        //this.john.tick();
 
       // without PLayer.java
         //this.col++;
@@ -93,12 +121,21 @@ public class game implements Runnable {
         //start drawing
         this.g.drawImage(ImageLoader.loadImage("/textures/background.jpg"),0, 0, 800, 600, null);
 
+        //Game Menu
+        if (state == STATE.GAME) {
+            this.bird.render(this.g);
+            this.john.render(this.g);
+        } else if (state == STATE.MENU){
+            this.menu.render(this.g);
 
+
+        }
 
         //SpriteSheet fighter = Assets.fighter;
 
-        this.bird.render(this.g);
-        this.john.render(this.g);
+      //Before Game Menu
+        /*this.bird.render(this.g);
+        this.john.render(this.g);*/
 
        //whithout PLayer.java
         //int imgWidth = 105;

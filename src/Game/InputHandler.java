@@ -11,11 +11,14 @@ import java.awt.event.KeyListener;
 
 public class InputHandler implements KeyListener{
     private Canvas canvas;
+    private game.STATE state = game.STATE.MENU; //GameMenu
 
     public InputHandler(Canvas canvas){
         canvas.addKeyListener(this);
 
     }
+
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -27,45 +30,51 @@ public class InputHandler implements KeyListener{
 
         int code = e.getKeyCode();
 
-        if (code == KeyEvent.VK_RIGHT){
-            Player.isMovingRight= true;
-            Player.isMovingLeft= false;
 
-        } else  if (code == KeyEvent.VK_LEFT){
-            Player.isMovingRight= false;
-            Player.isMovingLeft= true;
-        }
+        if (state == game.STATE.MENU) { //Game Menu
+            if (code == KeyEvent.VK_RIGHT) {
+                Player.isMovingRight = true;
+                Player.isMovingLeft = false;
 
-        if (code == KeyEvent.VK_R){
-            Fighter.isMovingRight= true;
-            Fighter.isMovingLeft= false;
+            } else if (code == KeyEvent.VK_LEFT) {
+                Player.isMovingRight = false;
+                Player.isMovingLeft = true;
+            }
 
-        } else  if (code == KeyEvent.VK_L){
-            Fighter.isMovingRight= false;
-            Fighter.isMovingLeft= true;
+            if (code == KeyEvent.VK_R) {
+                Fighter.isMovingRight = true;
+                Fighter.isMovingLeft = false;
+
+            } else if (code == KeyEvent.VK_L) {
+                Fighter.isMovingRight = false;
+                Fighter.isMovingLeft = true;
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
-        if (code == KeyEvent.VK_RIGHT){
-            Player.isMovingRight= false;
-            Player.isMovingLeft= false;
-        } else  if (code == KeyEvent.VK_LEFT){
-            Player.isMovingRight= false;
-            Player.isMovingLeft= false;
-        }
+        if (state == game.STATE.MENU) { //Game Menu
+            if (code == KeyEvent.VK_RIGHT) {
+                Player.isMovingRight = false;
+                Player.isMovingLeft = false;
+            } else if (code == KeyEvent.VK_LEFT) {
+                Player.isMovingRight = false;
+                Player.isMovingLeft = false;
+            }
 
-        if (code == KeyEvent.VK_R){
-            Fighter.isMovingRight= false;
-            Fighter.isMovingLeft= false;
+            if (code == KeyEvent.VK_R) {
+                Fighter.isMovingRight = false;
+                Fighter.isMovingLeft = false;
 
-        } else  if (code == KeyEvent.VK_L){
-            Fighter.isMovingRight= false;
-            Fighter.isMovingLeft= false;
+            } else if (code == KeyEvent.VK_L) {
+                Fighter.isMovingRight = false;
+                Fighter.isMovingLeft = false;
+            }
         }
     }
 
 
 }
+
